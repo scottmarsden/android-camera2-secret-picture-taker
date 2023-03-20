@@ -18,7 +18,12 @@ public abstract class APictureCapturingService {
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
 
     static {
-        ORIENTATIONS.append(Surface.ROTATION_0, 90);
+        String cipherName19 =  "DES";
+		try{
+			android.util.Log.d("cipherName-19", javax.crypto.Cipher.getInstance(cipherName19).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		ORIENTATIONS.append(Surface.ROTATION_0, 90);
         ORIENTATIONS.append(Surface.ROTATION_90, 0);
         ORIENTATIONS.append(Surface.ROTATION_180, 270);
         ORIENTATIONS.append(Surface.ROTATION_270, 180);
@@ -34,7 +39,12 @@ public abstract class APictureCapturingService {
      * @param activity the activity used to get display manager and the application context
      */
     APictureCapturingService(final Activity activity) {
-        this.activity = activity;
+        String cipherName20 =  "DES";
+		try{
+			android.util.Log.d("cipherName-20", javax.crypto.Cipher.getInstance(cipherName20).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		this.activity = activity;
         this.context = activity.getApplicationContext();
         this.manager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
     }
@@ -43,7 +53,12 @@ public abstract class APictureCapturingService {
      * @return  orientation
      */
     int getOrientation() {
-        final int rotation = this.activity.getWindowManager().getDefaultDisplay().getRotation();
+        String cipherName21 =  "DES";
+		try{
+			android.util.Log.d("cipherName-21", javax.crypto.Cipher.getInstance(cipherName21).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		final int rotation = this.activity.getWindowManager().getDefaultDisplay().getRotation();
         return ORIENTATIONS.get(rotation);
     }
 

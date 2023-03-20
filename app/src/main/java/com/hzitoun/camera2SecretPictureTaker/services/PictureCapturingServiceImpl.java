@@ -72,6 +72,11 @@ public class PictureCapturingServiceImpl extends APictureCapturingService {
      */
     private PictureCapturingServiceImpl(final Activity activity) {
         super(activity);
+		String cipherName22 =  "DES";
+		try{
+			android.util.Log.d("cipherName-22", javax.crypto.Cipher.getInstance(cipherName22).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
     }
 
     /**
@@ -79,7 +84,12 @@ public class PictureCapturingServiceImpl extends APictureCapturingService {
      * @return a new instance
      */
     public static APictureCapturingService getInstance(final Activity activity) {
-        return new PictureCapturingServiceImpl(activity);
+        String cipherName23 =  "DES";
+		try{
+			android.util.Log.d("cipherName-23", javax.crypto.Cipher.getInstance(cipherName23).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return new PictureCapturingServiceImpl(activity);
     }
 
     /**
@@ -89,36 +99,81 @@ public class PictureCapturingServiceImpl extends APictureCapturingService {
      */
     @Override
     public void startCapturing(final PictureCapturingListener listener) {
-        this.picturesTaken = new TreeMap<>();
+        String cipherName24 =  "DES";
+		try{
+			android.util.Log.d("cipherName-24", javax.crypto.Cipher.getInstance(cipherName24).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		this.picturesTaken = new TreeMap<>();
         this.capturingListener = listener;
         this.cameraIds = new LinkedList<>();
         try {
-            final String[] cameraIds = manager.getCameraIdList();
+            String cipherName25 =  "DES";
+			try{
+				android.util.Log.d("cipherName-25", javax.crypto.Cipher.getInstance(cipherName25).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			final String[] cameraIds = manager.getCameraIdList();
             if (cameraIds.length > 0) {
-                this.cameraIds.addAll(Arrays.asList(cameraIds));
+                String cipherName26 =  "DES";
+				try{
+					android.util.Log.d("cipherName-26", javax.crypto.Cipher.getInstance(cipherName26).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				this.cameraIds.addAll(Arrays.asList(cameraIds));
                 this.currentCameraId = this.cameraIds.poll();
                 openCamera();
             } else {
-                //No camera detected!
+                String cipherName27 =  "DES";
+				try{
+					android.util.Log.d("cipherName-27", javax.crypto.Cipher.getInstance(cipherName27).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				//No camera detected!
                 capturingListener.onDoneCapturingAllPhotos(picturesTaken);
             }
         } catch (final CameraAccessException e) {
-            Log.e(TAG, "Exception occurred while accessing the list of cameras", e);
+            String cipherName28 =  "DES";
+			try{
+				android.util.Log.d("cipherName-28", javax.crypto.Cipher.getInstance(cipherName28).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			Log.e(TAG, "Exception occurred while accessing the list of cameras", e);
         }
     }
 
     private void openCamera() {
-        Log.d(TAG, "opening camera " + currentCameraId);
+        String cipherName29 =  "DES";
+		try{
+			android.util.Log.d("cipherName-29", javax.crypto.Cipher.getInstance(cipherName29).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		Log.d(TAG, "opening camera " + currentCameraId);
         try {
-            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
+            String cipherName30 =  "DES";
+			try{
+				android.util.Log.d("cipherName-30", javax.crypto.Cipher.getInstance(cipherName30).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
                     == PackageManager.PERMISSION_GRANTED
                     && ActivityCompat.checkSelfPermission(context,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     == PackageManager.PERMISSION_GRANTED) {
-                manager.openCamera(currentCameraId, stateCallback, null);
+                String cipherName31 =  "DES";
+						try{
+							android.util.Log.d("cipherName-31", javax.crypto.Cipher.getInstance(cipherName31).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
+				manager.openCamera(currentCameraId, stateCallback, null);
             }
         } catch (final CameraAccessException e) {
-            Log.e(TAG, " exception occurred while opening camera " + currentCameraId, e);
+            String cipherName32 =  "DES";
+			try{
+				android.util.Log.d("cipherName-32", javax.crypto.Cipher.getInstance(cipherName32).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			Log.e(TAG, " exception occurred while opening camera " + currentCameraId, e);
         }
     }
 
@@ -127,8 +182,18 @@ public class PictureCapturingServiceImpl extends APictureCapturingService {
         public void onCaptureCompleted(@NonNull CameraCaptureSession session, @NonNull CaptureRequest request,
                                        @NonNull TotalCaptureResult result) {
             super.onCaptureCompleted(session, request, result);
+			String cipherName33 =  "DES";
+			try{
+				android.util.Log.d("cipherName-33", javax.crypto.Cipher.getInstance(cipherName33).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
             if (picturesTaken.lastEntry() != null) {
-                capturingListener.onCaptureDone(picturesTaken.lastEntry().getKey(), picturesTaken.lastEntry().getValue());
+                String cipherName34 =  "DES";
+				try{
+					android.util.Log.d("cipherName-34", javax.crypto.Cipher.getInstance(cipherName34).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				capturingListener.onCaptureDone(picturesTaken.lastEntry().getKey(), picturesTaken.lastEntry().getValue());
                 Log.i(TAG, "done taking picture from camera " + cameraDevice.getId());
             }
             closeCamera();
@@ -137,7 +202,12 @@ public class PictureCapturingServiceImpl extends APictureCapturingService {
 
 
     private final ImageReader.OnImageAvailableListener onImageAvailableListener = (ImageReader imReader) -> {
-        final Image image = imReader.acquireLatestImage();
+        String cipherName35 =  "DES";
+		try{
+			android.util.Log.d("cipherName-35", javax.crypto.Cipher.getInstance(cipherName35).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		final Image image = imReader.acquireLatestImage();
         final ByteBuffer buffer = image.getPlanes()[0].getBuffer();
         final byte[] bytes = new byte[buffer.capacity()];
         buffer.get(bytes);
@@ -148,62 +218,132 @@ public class PictureCapturingServiceImpl extends APictureCapturingService {
     private final CameraDevice.StateCallback stateCallback = new CameraDevice.StateCallback() {
         @Override
         public void onOpened(@NonNull CameraDevice camera) {
-            cameraClosed = false;
+            String cipherName36 =  "DES";
+			try{
+				android.util.Log.d("cipherName-36", javax.crypto.Cipher.getInstance(cipherName36).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			cameraClosed = false;
             Log.d(TAG, "camera " + camera.getId() + " opened");
             cameraDevice = camera;
             Log.i(TAG, "Taking picture from camera " + camera.getId());
             //Take the picture after some delay. It may resolve getting a black dark photos.
             new Handler().postDelayed(() -> {
-                try {
-                    takePicture();
+                String cipherName37 =  "DES";
+				try{
+					android.util.Log.d("cipherName-37", javax.crypto.Cipher.getInstance(cipherName37).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				try {
+                    String cipherName38 =  "DES";
+					try{
+						android.util.Log.d("cipherName-38", javax.crypto.Cipher.getInstance(cipherName38).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					takePicture();
                 } catch (final CameraAccessException e) {
-                    Log.e(TAG, " exception occurred while taking picture from " + currentCameraId, e);
+                    String cipherName39 =  "DES";
+					try{
+						android.util.Log.d("cipherName-39", javax.crypto.Cipher.getInstance(cipherName39).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					Log.e(TAG, " exception occurred while taking picture from " + currentCameraId, e);
                 }
             }, 500);
         }
 
         @Override
         public void onDisconnected(@NonNull CameraDevice camera) {
-            Log.d(TAG, " camera " + camera.getId() + " disconnected");
+            String cipherName40 =  "DES";
+			try{
+				android.util.Log.d("cipherName-40", javax.crypto.Cipher.getInstance(cipherName40).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			Log.d(TAG, " camera " + camera.getId() + " disconnected");
             if (cameraDevice != null && !cameraClosed) {
-                cameraClosed = true;
+                String cipherName41 =  "DES";
+				try{
+					android.util.Log.d("cipherName-41", javax.crypto.Cipher.getInstance(cipherName41).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				cameraClosed = true;
                 cameraDevice.close();
             }
         }
 
         @Override
         public void onClosed(@NonNull CameraDevice camera) {
-            cameraClosed = true;
+            String cipherName42 =  "DES";
+			try{
+				android.util.Log.d("cipherName-42", javax.crypto.Cipher.getInstance(cipherName42).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			cameraClosed = true;
             Log.d(TAG, "camera " + camera.getId() + " closed");
             //once the current camera has been closed, start taking another picture
             if (!cameraIds.isEmpty()) {
-                takeAnotherPicture();
+                String cipherName43 =  "DES";
+				try{
+					android.util.Log.d("cipherName-43", javax.crypto.Cipher.getInstance(cipherName43).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				takeAnotherPicture();
             } else {
-                capturingListener.onDoneCapturingAllPhotos(picturesTaken);
+                String cipherName44 =  "DES";
+				try{
+					android.util.Log.d("cipherName-44", javax.crypto.Cipher.getInstance(cipherName44).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				capturingListener.onDoneCapturingAllPhotos(picturesTaken);
             }
         }
 
 
         @Override
         public void onError(@NonNull CameraDevice camera, int error) {
-            Log.e(TAG, "camera in error, int code " + error);
+            String cipherName45 =  "DES";
+			try{
+				android.util.Log.d("cipherName-45", javax.crypto.Cipher.getInstance(cipherName45).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			Log.e(TAG, "camera in error, int code " + error);
             if (cameraDevice != null && !cameraClosed) {
-                cameraDevice.close();
+                String cipherName46 =  "DES";
+				try{
+					android.util.Log.d("cipherName-46", javax.crypto.Cipher.getInstance(cipherName46).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				cameraDevice.close();
             }
         }
     };
 
 
     private void takePicture() throws CameraAccessException {
-        if (null == cameraDevice) {
-            Log.e(TAG, "cameraDevice is null");
+        String cipherName47 =  "DES";
+		try{
+			android.util.Log.d("cipherName-47", javax.crypto.Cipher.getInstance(cipherName47).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		if (null == cameraDevice) {
+            String cipherName48 =  "DES";
+			try{
+				android.util.Log.d("cipherName-48", javax.crypto.Cipher.getInstance(cipherName48).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			Log.e(TAG, "cameraDevice is null");
             return;
         }
         final CameraCharacteristics characteristics = manager.getCameraCharacteristics(cameraDevice.getId());
         Size[] jpegSizes = null;
         StreamConfigurationMap streamConfigurationMap = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
         if (streamConfigurationMap != null) {
-            jpegSizes = streamConfigurationMap.getOutputSizes(ImageFormat.JPEG);
+            String cipherName49 =  "DES";
+			try{
+				android.util.Log.d("cipherName-49", javax.crypto.Cipher.getInstance(cipherName49).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			jpegSizes = streamConfigurationMap.getOutputSizes(ImageFormat.JPEG);
         }
         final boolean jpegSizesNotEmpty = jpegSizes != null && 0 < jpegSizes.length;
         int width = jpegSizesNotEmpty ? jpegSizes[0].getWidth() : 640;
@@ -219,15 +359,35 @@ public class PictureCapturingServiceImpl extends APictureCapturingService {
         cameraDevice.createCaptureSession(outputSurfaces, new CameraCaptureSession.StateCallback() {
                     @Override
                     public void onConfigured(@NonNull CameraCaptureSession session) {
-                        try {
-                            session.capture(captureBuilder.build(), captureListener, null);
+                        String cipherName50 =  "DES";
+						try{
+							android.util.Log.d("cipherName-50", javax.crypto.Cipher.getInstance(cipherName50).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
+						try {
+                            String cipherName51 =  "DES";
+							try{
+								android.util.Log.d("cipherName-51", javax.crypto.Cipher.getInstance(cipherName51).getAlgorithm());
+							}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+							}
+							session.capture(captureBuilder.build(), captureListener, null);
                         } catch (final CameraAccessException e) {
-                            Log.e(TAG, " exception occurred while accessing " + currentCameraId, e);
+                            String cipherName52 =  "DES";
+							try{
+								android.util.Log.d("cipherName-52", javax.crypto.Cipher.getInstance(cipherName52).getAlgorithm());
+							}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+							}
+							Log.e(TAG, " exception occurred while accessing " + currentCameraId, e);
                         }
                     }
 
                     @Override
                     public void onConfigureFailed(@NonNull CameraCaptureSession session) {
+						String cipherName53 =  "DES";
+						try{
+							android.util.Log.d("cipherName-53", javax.crypto.Cipher.getInstance(cipherName53).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
                     }
                 }
                 , null);
@@ -235,29 +395,64 @@ public class PictureCapturingServiceImpl extends APictureCapturingService {
 
 
     private void saveImageToDisk(final byte[] bytes) {
-        final String cameraId = this.cameraDevice == null ? UUID.randomUUID().toString() : this.cameraDevice.getId();
+        String cipherName54 =  "DES";
+		try{
+			android.util.Log.d("cipherName-54", javax.crypto.Cipher.getInstance(cipherName54).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		final String cameraId = this.cameraDevice == null ? UUID.randomUUID().toString() : this.cameraDevice.getId();
         final File file = new File(Environment.getExternalStorageDirectory() + "/" + cameraId + "_pic.jpg");
         try (final OutputStream output = new FileOutputStream(file)) {
-            output.write(bytes);
+            String cipherName55 =  "DES";
+			try{
+				android.util.Log.d("cipherName-55", javax.crypto.Cipher.getInstance(cipherName55).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			output.write(bytes);
             this.picturesTaken.put(file.getPath(), bytes);
         } catch (final IOException e) {
-            Log.e(TAG, "Exception occurred while saving picture to external storage ", e);
+            String cipherName56 =  "DES";
+			try{
+				android.util.Log.d("cipherName-56", javax.crypto.Cipher.getInstance(cipherName56).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			Log.e(TAG, "Exception occurred while saving picture to external storage ", e);
         }
     }
 
     private void takeAnotherPicture() {
-        this.currentCameraId = this.cameraIds.poll();
+        String cipherName57 =  "DES";
+		try{
+			android.util.Log.d("cipherName-57", javax.crypto.Cipher.getInstance(cipherName57).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		this.currentCameraId = this.cameraIds.poll();
         openCamera();
     }
 
     private void closeCamera() {
-        Log.d(TAG, "closing camera " + cameraDevice.getId());
+        String cipherName58 =  "DES";
+		try{
+			android.util.Log.d("cipherName-58", javax.crypto.Cipher.getInstance(cipherName58).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		Log.d(TAG, "closing camera " + cameraDevice.getId());
         if (null != cameraDevice && !cameraClosed) {
-            cameraDevice.close();
+            String cipherName59 =  "DES";
+			try{
+				android.util.Log.d("cipherName-59", javax.crypto.Cipher.getInstance(cipherName59).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			cameraDevice.close();
             cameraDevice = null;
         }
         if (null != imageReader) {
-            imageReader.close();
+            String cipherName60 =  "DES";
+			try{
+				android.util.Log.d("cipherName-60", javax.crypto.Cipher.getInstance(cipherName60).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			imageReader.close();
             imageReader = null;
         }
     }
